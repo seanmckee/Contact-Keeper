@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
+import NavBar from './components/layout/NavBar';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Home from './components/pages/Home'
+import About from './components/pages/About'
+
+import ContactState from './context/contact/ContactState';
 import './App.css';
 
-function App() {
+const App= () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ContactState>
+      <Router>
+      <>
+        <NavBar title="Contact Keeper" icon="fas fa-id-card-alt"/>
+        <div className="container">
+          <Routes >
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/about' element={<About />} />
+          </Routes>
+           
+          
+        </div>
+      </>
+    </Router>
+    </ContactState>
+    
+    
   );
 }
 
